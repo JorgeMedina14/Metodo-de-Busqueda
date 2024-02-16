@@ -1,0 +1,63 @@
+Algoritmo "Búsqueda Secuencial y Binaria"
+
+Proceso main()
+    Definir lista[] como Entero
+    lista[] = {1, 2, 3, 4, 5, 6, 7}
+    Definir posicionSecuencial, posicionBinaria como Entero
+    posicionSecuencial = busquedaSecuencial(lista, 4)
+    posicionBinaria = busquedaBinaria(lista, 4)
+    
+    Si posicionSecuencial == -1 Entonces
+        Escribir "Número no encontrado (búsqueda secuencial)"
+    SiNo
+        Escribir "Número encontrado en la posición ", posicionSecuencial, " (búsqueda secuencial)"
+    FinSi
+    
+    Si posicionBinaria == -1 Entonces
+        Escribir "Número no encontrado (búsqueda binaria)"
+    SiNo
+        Escribir "Número encontrado en la posición ", posicionBinaria, " (búsqueda binaria)"
+    FinSi
+FinProceso
+
+Funcion busquedaSecuencial(Entero v[], Entero buscado) -> Entero
+    Definir encontrado, i como Booleano
+    encontrado = Falso
+    i = 0
+    Mientras i <= Longitud(v) - 1 Y No encontrado Hacer
+        Si buscado == v[i] Entonces
+            encontrado = Verdadero
+        SiNo
+            i = i + 1
+        FinSi
+    FinMientras
+    
+    Si encontrado Entonces
+        Devolver i
+    SiNo
+        Devolver -1
+    FinSi
+FinFuncion
+
+Funcion busquedaBinaria(Entero v[], Entero buscado) -> Entero
+    Definir bajo, alto, central como Entero
+    Definir encontrado como Booleano
+    bajo = 0
+    alto = Longitud(v) - 1
+    encontrado = Falso
+    Mientras No encontrado Y bajo <= alto Hacer
+        central = (bajo + alto) / 2
+        Si buscado == v[central] Entonces
+            encontrado = Verdadero
+            Devolver central
+        SiNo
+            Si buscado < v[central] Entonces
+                alto = central - 1
+            SiNo
+                bajo = central + 1
+            FinSi
+        FinSi
+    FinMientras
+    
+    Devolver -1
+FinFuncion
